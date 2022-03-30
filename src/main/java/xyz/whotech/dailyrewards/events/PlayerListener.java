@@ -21,11 +21,13 @@ public class PlayerListener implements Listener {
         if (!Settings.isAutoClaimEnabled){
             return;
         }
-        Player player = event.getPlayer();
+        final  Player player = event.getPlayer();
         PlayerManager manager = PlayerManager.getCache(player);
         if (PlayerUtil.getMap().get(player.getUniqueId())){
             RewardsManager.giveFinalRewards(player, dailyRewards, manager);
         }else if (!(PlayerUtil.getMap().containsKey(player.getUniqueId()))){
+            RewardsManager.giveFirstRewards(player, dailyRewards);
+        }else if (PlayerUtil.getMap().isEmpty()){
             RewardsManager.giveFirstRewards(player, dailyRewards);
         }
     }
