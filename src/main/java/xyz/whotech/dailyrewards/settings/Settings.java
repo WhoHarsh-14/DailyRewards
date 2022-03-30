@@ -4,9 +4,9 @@ import org.mineacademy.fo.settings.SimpleSettings;
 
 public class Settings extends SimpleSettings {
     public static String command;
-    public static int economyValue;
-    public static boolean isEconomyEnabled;
-    public static boolean isAutoClaimEnabled;
+    public static Integer economyValue;
+    public static Boolean isEconomyEnabled;
+    public static Boolean isAutoClaimEnabled;
     public static String NO_REWARD;
     public static String AUTO_CLAIM_ENABLED;
     public static String GIVING_REWARD;
