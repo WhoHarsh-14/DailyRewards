@@ -1,0 +1,23 @@
+
+Features:
+  # By Changing this you will have to execute command to get daily rewards
+  auto_claim: true
+Rewards:
+  Economy: true
+  # this means every day player logs in he will get multiple of this value For Example:-
+  # day 1 -> 100$
+  # day 2 -> 200$
+  Base_value: 100
+  # Command Executed by the Console
+  # !!! Don't Add `/` While Adding Command
+  Extra_Commands: 'give {player} diamond 1'
+Messages:
+  Auto_Claim_Enabled: "&cSorry, the feature for manual collection is disabled.. Contact server Admin"
+  No_Rewards: "&cSorry You Already Collected Today's Reward"
+  Reward: "&aCongratulation! You Login for {days} day here is your rewards!"
+
+
+# Don't Touch These
+Version: 1
+Log_Lag_Over_Milis: 100
+Debug: []
