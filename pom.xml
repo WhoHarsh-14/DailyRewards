@@ -53,7 +53,7 @@
         <main.class>xyz.whotech.dailyrewards.DailyRewards</main.class>
 
         <!-- The Foundation version - change to latest version from https://github.com/kangarko/Foundation/releases -->
-        <foundation.version>5.12.7</foundation.version>
+        <foundation.version>6.2.5</foundation.version>
 
         <!-- The Java version your plugin uses, see bstats.org for what most servers have and use that -->
         <java.version>1.8</java.version>
@@ -78,8 +78,8 @@
    -->
     <repositories>
         <repository>
-            <id>spigotmc-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
+            <id>papermc-repo</id>
+            <url>https://papermc.io/repo/repository/maven-public/</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
@@ -104,16 +104,15 @@
            Make sure you change the version to the latest version you want to use for your plugin.
        -->
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
+            <groupId>org.github.paperspigot</groupId>
+            <artifactId>paperspigot-api</artifactId>
 
             <!-- Change this to the latest version to stay up to date -->
-            <version>1.15.2-R0.1-SNAPSHOT</version>
+            <version>1.8.8-R0.1-SNAPSHOT</version>
 
             <!--
                The scope indicates if this library should be packaged together with our plugin
                when we want to publish it.
-
                Set this to "compile" if you want all classes from this library to be copied
                to your plugin's jar, otherwise set this to "provided".
            -->

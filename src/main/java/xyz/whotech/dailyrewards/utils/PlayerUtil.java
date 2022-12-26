@@ -8,9 +8,9 @@ import java.util.UUID;
 
 @UtilityClass
 public class PlayerUtil {
-    public Map<UUID, Boolean> newDayMap = new HashMap<>();
+    public Map<UUID, Long> newDayMap = new HashMap<>();
 
-    public Map<UUID, Boolean> getMap(){
+    public Map<UUID, Long> getMap(){
         return newDayMap;
     }
 }

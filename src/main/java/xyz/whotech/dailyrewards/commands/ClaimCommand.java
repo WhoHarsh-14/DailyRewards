@@ -25,7 +25,7 @@ public class ClaimCommand extends SimpleCommand {
             Common.tell(player, Settings.AUTO_CLAIM_ENABLED);
         }else {
             if (PlayerUtil.getMap().containsKey(player.getUniqueId())){
-                if (PlayerUtil.getMap().get(player.getUniqueId())){
+                if (PlayerUtil.getMap().get(player.getUniqueId()) >= System.currentTimeMillis()){
                     RewardsManager.giveFinalRewards(player, dailyRewards, manager);
                 }else {
                     Common.tell(player, Settings.NO_REWARD);

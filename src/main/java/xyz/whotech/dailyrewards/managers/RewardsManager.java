@@ -21,17 +21,17 @@ public class RewardsManager {
 
     public static void giveFinalRewards(Player player, DailyRewards dailyRewards, PlayerManager manager){
         String message = Settings.GIVING_REWARD.replace("{days}", String.valueOf(manager.getDays()));
-        Common.tell(player);
+        Common.tell(player, message);
         RewardsManager.giveRewards(player,dailyRewards);
         manager.setDays(manager.getDays() + 1);
-        PlayerUtil.getMap().replace(player.getUniqueId(), false);
+        PlayerUtil.getMap().replace(player.getUniqueId(), System.currentTimeMillis() + 86400000);
     }
     public static void giveFirstRewards(Player player, DailyRewards dailyRewards){
-        String message = "&cThanks For Joining for the first time! Here's your rewards";
+        String message = Settings.FIRST_TIME_REWARD;
         Common.tell(player, message);
         RewardsManager.giveRewards(player,dailyRewards);
         PlayerManager manager = new PlayerManager(player.getUniqueId().toString());
         manager.setDays(1);
-        PlayerUtil.getMap().put(player.getUniqueId(), false);
+        PlayerUtil.getMap().put(player.getUniqueId(), System.currentTimeMillis() + 86400000 );
     }
 }

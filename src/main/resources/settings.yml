@@ -1,4 +1,5 @@
 
+Prefix: "&f[&b&lDaily&c&lRewards&f] "
 Features:
   # By Changing this you will have to execute command to get daily rewards
   auto_claim: true
@@ -14,6 +15,7 @@ Rewards:
 Messages:
   Auto_Claim_Enabled: "&cSorry, the feature for manual collection is disabled.. Contact server Admin"
   No_Rewards: "&cSorry You Already Collected Today's Reward"
+  First_time_join: "&cThanks For Joining for the first time! Here's your rewards"
   Reward: "&aCongratulation! You Login for {days} day here is your rewards!"
 
 
