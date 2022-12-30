@@ -7,10 +7,10 @@ import xyz.whotech.dailyrewards.DailyRewards;
 import xyz.whotech.dailyrewards.managers.PlayerManager;
 import xyz.whotech.dailyrewards.managers.RewardsManager;
 import xyz.whotech.dailyrewards.settings.Settings;
-import xyz.whotech.dailyrewards.utils.PlayerUtil;
 
 public class ClaimCommand extends SimpleCommand {
     private DailyRewards dailyRewards;
+
     public ClaimCommand(DailyRewards dailyRewards) {
         super("dr");
         this.dailyRewards = dailyRewards;
@@ -21,16 +21,19 @@ public class ClaimCommand extends SimpleCommand {
         checkConsole();
         final Player player = getPlayer();
         PlayerManager manager = PlayerManager.getCache(player);
-        if (Settings.isAutoClaimEnabled){
+        if (Settings.isAutoClaimEnabled) {
             Common.tell(player, Settings.AUTO_CLAIM_ENABLED);
-        }else {
-            if (PlayerUtil.getMap().containsKey(player.getUniqueId())){
-                if (PlayerUtil.getMap().get(player.getUniqueId()) >= System.currentTimeMillis()){
+        } else {
+            if (manager.getDays() >= 2) {
+                final long playerTime = PlayerManager.getCache(player).getTimeForNextReward();
+                if (playerTime <= System.currentTimeMillis()) {
+                    Common.log(playerTime + ":- Player time");
+                    Common.log(System.currentTimeMillis() + ":- Current time");
                     RewardsManager.giveFinalRewards(player, dailyRewards, manager);
-                }else {
+                } else {
                     Common.tell(player, Settings.NO_REWARD);
                 }
-            }else {
+            } else {
                 RewardsManager.giveFirstRewards(player, dailyRewards);
             }
         }

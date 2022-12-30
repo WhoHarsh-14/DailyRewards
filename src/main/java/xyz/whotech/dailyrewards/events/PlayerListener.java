@@ -8,26 +8,26 @@ import xyz.whotech.dailyrewards.DailyRewards;
 import xyz.whotech.dailyrewards.managers.PlayerManager;
 import xyz.whotech.dailyrewards.managers.RewardsManager;
 import xyz.whotech.dailyrewards.settings.Settings;
-import xyz.whotech.dailyrewards.utils.PlayerUtil;
 
 public class PlayerListener implements Listener {
     private DailyRewards dailyRewards;
 
-    public PlayerListener(DailyRewards dailyRewards){
+    public PlayerListener(DailyRewards dailyRewards) {
         this.dailyRewards = dailyRewards;
     }
+
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event){
-        if (!Settings.isAutoClaimEnabled){
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        if (!Settings.isAutoClaimEnabled) {
             return;
         }
-        final  Player player = event.getPlayer();
+        final Player player = event.getPlayer();
         PlayerManager manager = PlayerManager.getCache(player);
-        if (!(PlayerUtil.getMap().containsKey(player.getUniqueId()))){
+        if (PlayerManager.getCache(player).getDays() >= 1) {
             RewardsManager.giveFirstRewards(player, dailyRewards);
             return;
         }
-        if (PlayerUtil.getMap().get(player.getUniqueId()) >= System.currentTimeMillis()){
+        if (PlayerManager.getCache(player).getTimeForNextReward() <= System.currentTimeMillis()) {
             RewardsManager.giveFinalRewards(player, dailyRewards, manager);
         }
     }
